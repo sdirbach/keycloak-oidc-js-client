@@ -41,6 +41,7 @@
     <button onclick="output(keycloak.createLogoutUrl())">Show Logout URL</button>
     <button onclick="output(keycloak.createRegisterUrl())">Show Register URL</button>
     <button onclick="output(keycloak.createAccountUrl())">Show Account URL</button>
+    <button onclick="callHelloService()">Call Test API (Hello Service)</button>
 
 </div>
 
@@ -52,6 +53,28 @@
 
 
 <script>
+  function callHelloService() {
+      var url = "https://hello-world-oidc-user1-apicast-staging.apps.ocp4hetzner.out-of-my-head.de:443/hello/Sascha";
+      var req = new XMLHttpRequest();
+      req.open('GET', url, true);
+      req.withCredentials = true;
+      req.setRequestHeader('Accept', 'application/json');
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);
+
+      req.onreadystatechange = function () {
+          if (req.readyState == 4) {
+              if (req.status == 200) {
+                  output('Success: ' + req.response);
+              } else {
+                  output('Failed: ' + req.response);
+              }
+          }
+      }
+
+      req.send();
+    }
+
     function loadProfile() {
         keycloak.loadUserProfile().success(function(profile) {
             output(profile);
