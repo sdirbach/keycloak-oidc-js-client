@@ -170,7 +170,8 @@
     // Flow can be changed to 'implicit' or 'hybrid', but then client must enable implicit flow in admin console too
     var initOptions = {
         responseMode: 'fragment',
-        flow: 'standard'
+        flow: 'standard',
+        pkceMethod: 'S256'
     };
 
     keycloak.init(initOptions).then(function(authenticated) {
