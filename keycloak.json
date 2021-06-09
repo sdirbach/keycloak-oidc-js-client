@@ -1,0 +1,10 @@
+{
+  "realm_comment": "TODO: Enter correct realm",
+  "realm": "user1-realm",
+  "auth-server-url_comment": "TODO: Enter correct auth server url (RH SSO)",
+  "auth-server-url": "https://keycloak-sso.apps.ocp4hetzner.out-of-my-head.de/auth/",
+  "ssl-required": "external",
+  "resource_comment": "TODO: Enter client id",
+  "resource": "8298ca2c",
+  "public-client": true
+}
